@@ -1,0 +1,20 @@
+{
+   "name": "sp-templating-engine/sp-templating-engine",
+   "description": "A simple jquery datatable editor library in PHP",
+   "keywords": ["jquery", "datatable", "editor", "php"],
+   "homepage": "https://github.com/Gicehajunior/SPTemplateEngine.git",
+   "license": "MIT",
+   "authors": [
+      {
+         "name": "Giceha Junior",
+         "email": "gicehajunior76@daphascomp.com",
+         "homepage": "https://github.com/Gicehajunior/SPTemplateEngine.git"
+      }
+   ],
+   "require": {
+      "php": ">=5.3.0"
+   },
+   "autoload": {
+      "classmap": ["SelfPhp/TemplatingEngine/SPTemplateEngine.php"]
+   }
+}
