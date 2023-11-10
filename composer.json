@@ -1,6 +1,6 @@
 {
    "name": "sp-templating-engine/sp-templating-engine",
-   "description": "A simple jquery datatable editor library in PHP",
+   "description": "A versatile and lightweight PHP templating engine designed for seamless integration into web development projects.",
    "keywords": ["jquery", "datatable", "editor", "php"],
    "homepage": "https://github.com/Gicehajunior/SPTemplateEngine.git",
    "license": "MIT",
