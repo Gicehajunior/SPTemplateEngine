@@ -1,7 +1,7 @@
 {
    "name": "sp-templating-engine/sp-templating-engine",
    "description": "A versatile and lightweight PHP templating engine designed for seamless integration into web development projects.",
-   "keywords": ["jquery", "datatable", "editor", "php"],
+   "keywords": ["php", "templating", "engine", "template", "html", "css", "javascript", "web", "development", "framework"],
    "homepage": "https://github.com/Gicehajunior/SPTemplateEngine.git",
    "license": "MIT",
    "authors": [
@@ -11,6 +11,7 @@
          "homepage": "https://github.com/Gicehajunior/SPTemplateEngine.git"
       }
    ],
+   "minimum-stability": "stable",
    "require": {
       "php": ">=5.3.0"
    },

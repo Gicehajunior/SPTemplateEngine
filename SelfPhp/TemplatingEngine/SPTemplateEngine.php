@@ -29,7 +29,7 @@ namespace SelfPhp\TemplatingEngine;
  * - Ensure that assigned variables match the placeholders in the template.
  * 
  * [ Version Information ]
- * SPTemplateEngine v1.0.0-beta
+ * SPTemplateEngine v1.0.0
  * 
  * [ Author ]
  * Giceha Junior - https://github.com/Gicehajunior
