@@ -2,6 +2,8 @@
 
 namespace SelfPhp\TemplatingEngine;
 
+use SelfPhp\SP;
+
 /**
  * *******************************************************
  * 
@@ -39,7 +41,7 @@ namespace SelfPhp\TemplatingEngine;
  * 
  * *******************************************************
  */
-class SPTemplateEngine {
+class SPTemplateEngine extends SP{
     /**
      * @var string $template The template string to be rendered.
      */
@@ -51,6 +53,11 @@ class SPTemplateEngine {
     private $variables;
 
     /**
+     * @var string $selfphp The selfphp class instance. 
+     */
+    private $selfphp;
+
+    /**
      * Constructor method for initializing the SPTemplateEngine instance.
      *
      * @param string $template The template string to be rendered.
@@ -58,6 +65,46 @@ class SPTemplateEngine {
     public function __construct($template) {
         $this->template = $template;
         $this->variables = [];
+
+        $this->selfphp = new SP();
+    } 
+
+    /**
+     * Loads the content of a file and includes it in the template.
+     * 
+     * @param string $file The name of the file to extend.
+     * @param mixed $data The data to be passed to the extended file.
+     * @return mixed The content of the extended file.
+     */
+    function page_extends($file, $data=null) {   
+        $filecontent = $this->selfphp->resource($file, $data);
+
+        return $filecontent;
+    }
+
+    /**
+     * Handles file inclusions in the template.
+     *
+     * @param string $template The template string to be processed.
+     * @return string The processed template string with file inclusions.
+     */
+    private function handleFileInclusions($template) {
+        $output = $template;
+
+        // Handle file inclusions like @extends(__app__)
+        $output = preg_replace_callback('/{{\s*@extends\(\s*"__([^"]+)__"\s*\)\s*}}/', function ($matches) {
+            $filename = $matches[1]; 
+            $filecontent = $this->page_extends($filename); // Adjust the path as needed
+            
+            // check if the filecontent is not empty and return the filecontent
+            if (!empty($filecontent)) {
+                return $filecontent;
+            }
+            
+            return $matches[0]; // Return the original expression if file not found
+        }, $output);  
+
+        return $output;
     }
 
     /**
@@ -133,7 +180,8 @@ class SPTemplateEngine {
             }, $output);
         }
 
-        $output = $this->parseFunctions($output); 
+        $output = $this->parseFunctions($output);
+        $output = $this->handleFileInclusions($output); 
         
         return $output;
     }
