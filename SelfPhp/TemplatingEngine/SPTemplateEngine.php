@@ -76,7 +76,7 @@ class SPTemplateEngine extends SP{
      * @param mixed $data The data to be passed to the extended file.
      * @return mixed The content of the extended file.
      */
-    function page_extends($file, $data=null) {   
+    function page_extends($file, $data=[]) {   
         $filecontent = $this->selfphp->resource($file, $data);
 
         return $filecontent;
